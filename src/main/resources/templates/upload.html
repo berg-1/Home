@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Berg | Home Page</title>
+
+</head>
+<body>
+<h1>Hello, this is my home page!</h1>
+<form role="form" th:action="@{/uploadFile}" method="post" enctype="multipart/form-data">
+    <input type="file" id="file" name="file"/>
+    <button type="submit" >提交</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/home?serverTimezone=CTT&characterEncoding=UTF-8  # 设置字符编码utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver  # tomcat 8.0+
+  sql:
+    init:
+      encoding: UTF-8
+  web:
+    resources:
+      cache:  # 页面静态文件缓存
+        cachecontrol:
+          cache-private: true
+          must-revalidate: true
+          max-age: 3600
+          cache-public: true

@@ -1,0 +1,332 @@
+@import url('bootstrap.min.css');
+@import url('../fonts/css/JetBrains Mono.css');
+@import url('../fonts/css/icomoon.css');
+@import url('../fonts/css/fonts.css');
+
+:root {
+    /* COLORS */
+    --primary: #4242a2;
+    --primary-light: #1b1bd1;
+    --primary-lighter: #0a58ca;
+    --primary-dark: #9d9dea;
+    --secondary: #4242A2A8;
+    --black: #1D1D1F;
+    --blackest: #000;
+    --white: #F5F5F7;
+    --whitest: #fff;
+    --night-white: #d8d8d8;
+    --grey: #2d2d2c;
+    --blue: #0367a6;
+    --red: #d9534f;
+    --purple: #4242a2;
+    --lightblue: #008997;
+    --yellow: #ffc107;
+    --light-yellow: #ffda6b;
+    --ocean-blue: #0dcaf0;
+    --light-ocean-blue: #03a9f4;
+    --opacity-99: #ffffff99;
+    --dark-grey: #45454f;
+    --light-grey: #c4c4c4;
+    --muted: #4e5153;
+    --muted-light: #9fb1c6;
+    /* Background */
+    --light-bg: url("../images/wallpapers/Monterey-light.jpeg");
+    --dark-bg: url("../images/wallpapers/Monterey-dark.jpeg");
+    --banner-bg: url("../images/wallpapers/wallhaven-57zp87.png");
+    --light-pure-bg: hsla(0, 0%, 100%, .3);
+    --dark-pure-bg: hsla(0, 0%, 100%, .3);
+    /* Radius */
+    --button-radius: 0.7rem;
+    --border-radius: 0.8rem;
+    --font-color: var(--white);
+    --transition: 1s;
+}
+
+.light-theme {
+    --bg: var(--light-bg);
+    --fontColor: var(--black);
+    --headline-color: var(--blackest);
+    --nav-link: var(--primary);
+    --title-color: var(--primary);
+    --nav-link-bg: var(--primary);
+    --link-color: var(--primary-light);
+    --link-hover-color: var(--primary-lighter);
+    --dark-switch: var(--dark-grey);
+    --footer-font-color: var(--dark-grey);
+    --rotate-adjust: rotate(0deg);
+    --copy-right: var(--muted);
+    --notice-bg: var(--light-pure-bg)
+}
+
+.dark-theme {
+    --bg: var(--dark-bg);
+    --fontColor: var(--night-white);
+    --nav-link: var(--primary-dark);
+    --title-color: var(--white);
+    --headline-color: var(--whitest);
+    --nav-link-bg: var(--secondary);
+    --link-color: var(--light-ocean-blue);
+    --link-hover-color: var(--ocean-blue);
+    --dark-switch: var(--white);
+    --footer-font-color: var(--light-grey);
+    --rotate-adjust: rotate(180deg);
+    --copy-right: var(--muted-light);
+    --notice-bg: var(--dark-pure-bg)
+}
+
+* {
+    font-family: "JetBrains Mono Bold", var(--Heiti), serif;
+    transition: background-image 0.6s ease-in-out;
+}
+
+html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, .head-line {
+    font-family: 'Abel', sans-serif;
+    font-weight: bold;
+    color: var(--headline-color);
+    transition: var(--transition);
+}
+
+del, ul, li, dd, dt, th, td {
+    color: var(--fontColor);
+    transition: var(--transition);
+}
+
+p {
+    color: var(--fontColor);
+    transition: var(--transition);
+}
+
+/* common css */
+.main {
+    background-image: var(--bg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.blur {
+    background-color: hsla(0, 0%, 100%, .3);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.fs-1vmax {
+    font-size: 1vmax;
+}
+
+.border-top {
+    border-top: 1px solid #dee2e670 !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dee2e670 !important;
+}
+
+.Lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.Abel {
+    font-family: 'Abel', sans-serif;
+}
+
+/* nav bar  */
+header a span {
+    color: var(--title-color) !important;
+    margin: auto;
+}
+
+.nav-link {
+    display: block;
+    height: 100%;
+    padding: .5rem 1rem;
+    margin: 0 .5rem;
+    color: var(--nav-link);
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: var(--white) !important;
+    background-color: var(--nav-link-bg);
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* night mode switcher*/
+.switch {
+    width: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.switch div {
+    position: relative;
+    display: block;
+    background: var(--dark-switch);
+    width: 36px;
+    border-radius: 50px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.fa-adjust {
+    transform: var(--rotate-adjust);
+    transition: transform 0.6s;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #999;
+    transition: 0.4s;
+    border-radius: 34px;
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    position: relative;
+    margin-top: 7px;
+}
+
+input:checked + .slider {
+    transform: translateX(15px);
+}
+
+/* banner */
+.banner {
+    background: var(--banner-bg) 0/cover;
+    --fontColor: var(--white);
+    border-radius: var(--border-radius);
+}
+
+.banner-pic {
+    background: url('../images/wallpapers/Avicii_Rounded.png') center no-repeat;
+    background-size: contain;
+}
+
+.blur-black p {
+    color: var(--copy-right);
+}
+
+/* content */
+.content a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, underline 0.6s ease-in-out;
+}
+
+.content a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+.notice {
+    background: var(--notice-bg);
+}
+
+
+/* footer */
+.footer-link {
+    display: block;
+    font-size: .8vmax;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    color: var(--footer-font-color);
+}
+
+.footer-link:focus, .footer-link:hover {
+    color: var(--primary);
+}
+
+.copyright {
+    --bs-text-opacity: 1;
+    color: var(--copy-right) !important;
+}
+
+.copyright span {
+    font-size: calc(0.6rem + .4vw);
+}
+
+.copyright a {
+    --bs-text-opacity: 1;
+    color: var(--copy-right) !important;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.copyright a:hover {
+    color: var(--primary) !important;
+    text-decoration: underline;
+}
+
+/* code block things */
+.toolbar span {
+    user-select: none !important;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+/* upwards button */
+.upwards {
+    /* initial cant be seen */
+    font-size: 2em;
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    background: var(--primary);
+    color: var(--opacity-99);
+    border: none;
+    border-radius: 5px;
+    z-index: 1;
+    transition: .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.upwards:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 5px;
+    background-color: #07a3d7;
+    background-image: linear-gradient(315deg, #07a3d7 0%, #69bad7 74%);
+    box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, .5),
+    7px 7px 20px 0 rgba(0, 0, 0, .1),
+    4px 4px 5px 0 rgba(0, 0, 0, .1);
+    transition: all 0.3s ease;
+}
+
+.upwards:hover:after {
+    top: auto;
+    bottom: 0;
+    height: 100%;
+}
+
+.upwards:active {
+    bottom: 108px;
+}

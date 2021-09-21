@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.berg.home.mapper.MyFileMapper">
+
+    <resultMap id="BaseResultMap" type="me.berg.home.model.MyFile">
+            <id property="fid" column="fid" jdbcType="VARCHAR"/>
+            <result property="filename" column="filename" jdbcType="VARCHAR"/>
+            <result property="typename" column="typename" jdbcType="VARCHAR"/>
+            <result property="pid" column="pid" jdbcType="SMALLINT"/>
+    </resultMap>
+
+
+</mapper>

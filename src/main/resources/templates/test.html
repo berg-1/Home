@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Berg | Test Page</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" type="image/jpg"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}"/>
+    <link rel="stylesheet" th:href="@{/plugins/prism/prism.css}">
+</head>
+<body>
+<div class="main">
+    <div class="container blur p-4">
+        <p style="font-family: 'JetBrains Mono', serif">JetBrains Mono</p>
+        <p style="font-family: 'JetBrains Mono Italic', serif">JetBrains Mono Italic</p>
+        <p style="font-family: 'JetBrains Mono Bold', serif">JetBrains Mono Bold</p>
+        <p style="font-family: 'JetBrains Mono Light', serif">JetBrains Mono Light</p>
+        <div class="row">
+            <div class="col col-md-8">
+                <pre class="line-numbers" data-src="./static/css/note.md"></pre>
+            </div>
+            <div class="col col-md-4">
+            <pre class="line-numbers ">
+                <code class="language-python">print("Hello World!!&lt;")
+print("Hello World!&lt;")
+print("Hello World!?&lt;&realpart;")
+                </code>
+            </pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-md-6 col-sm-12">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="https://space.bilibili.com/12517262"
+                       class=" p-0 footer-link follow follow-bili"></a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class=" p-0 footer-link follow follow-youtube"></a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class=" p-0 footer-link follow follow-twitter"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/plugins/prism/prism.js}"></script>
+<script th:src="@{/js/init.js}"></script>
+</html>
