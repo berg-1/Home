@@ -70,10 +70,7 @@ public class FileController {
     }
 
     @RequestMapping("/downloadFile")
-    @CrossOrigin(
-            value = "*",
-            maxAge = 1800,
-            allowedHeaders = "*")
+    @CrossOrigin(value = "*", maxAge = 1800, allowedHeaders = "*")
     public ResponseEntity<byte[]> downloadFile(@RequestParam("id") String id) {
         log.debug("下载文件:id={}", id);
         FileData fileData = dataService.getById(id);
