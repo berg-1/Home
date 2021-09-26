@@ -22,22 +22,6 @@ const catalogTrack = () => {
 };
 
 
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("upward").style.visibility = "visible";
-        document.getElementById("upward").style.opacity = "1";
-    } else {
-        document.getElementById("upward").style.visibility = "hidden";
-        document.getElementById("upward").style.opacity = "0";
-    }
-}
-
-// 点击按钮，返回顶部
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
 // toggle between dark theme or light theme
 function togglePrismTheme() {
     const light = document.getElementById("light-theme"),
@@ -67,11 +51,6 @@ function toc() {
     });
 }
 
-const themeSwitch = document.querySelector('input');
-themeSwitch.addEventListener('change', () => {
-    document.body.classList.toggle('dark-theme');  // change web mode
-    togglePrismTheme()  // switch prism theme
-});
 
 const renderer = new marked.Renderer();
 renderer.code = function (code, lang, escaped) {
@@ -97,38 +76,6 @@ marked.setOptions({
     },
 });
 
-// horizontal gallery
-let scrollWidth = 1000
-const scroll = $("#scroll")[0];
-const prev = $("#scroll_prev");
-const next = $("#scroll_next");
-const maxScrollLeft = scroll.scrollWidth - scroll.clientWidth;
-scroll.onscroll = function () {
-    if (scroll.scrollLeft === 0) {
-        prev.addClass('disabled')
-    } else if (scroll.scrollLeft === maxScrollLeft) {
-        next.addClass('disabled')
-    } else {
-        prev.removeClass('disabled')
-        next.removeClass('disabled')
-    }
-}
-
-prev[0].onclick = function () {
-    scroll.scrollBy({
-        top: 0,
-        left: -scrollWidth,
-        behavior: 'smooth'
-    });
-};
-
-next[0].onclick = function () {
-    scroll.scrollBy({
-        top: 0,
-        left: scrollWidth,
-        behavior: 'smooth'
-    });
-};
 
 article_ajax = $.ajax({
     "type": 'get',
@@ -147,5 +94,5 @@ $.when(article_ajax).done(function () {  // when article ajax done
 
 jQuery(function () {
     console.log("document is ready!")
-    prev.addClass('disabled')  // init status
 });
+

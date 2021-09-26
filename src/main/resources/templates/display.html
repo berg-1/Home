@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Berg | Display Page</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" type="image/jpg"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}"/>
+    <link rel="stylesheet" th:href="@{/plugins/prism/prism.css}" id="dark-theme">
+    <link rel="stylesheet" th:href="@{/plugins/prism/prism-light.css}" id="light-theme">
+    <link rel="stylesheet" th:href="@{/plugins/toc/bootstrap-toc.css}">
+</head>
+<body class="main light-theme">
+
+<!-- Nav -->
+<div class="container py-3 blur">
+    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
+        <a href="javascript:void(0);"
+           class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center">
+            <img th:src="@{/images/favicon/favicon.png}" src="/static/images/favicon/favicon.png" alt="B" class="icon">
+            <span class="fs-4 head-line">erg's Site</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="javascript:void(0);" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="javascript:void(0);" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="javascript:void(0);" class="nav-link">About</a></li>
+            <li class="nav-item">
+                <label class="switch nav-link w-auto">
+                    <i class="fas fa-adjust"></i>&nbsp;
+                    <div>
+                        <input type="checkbox"/>
+                        <span class="slider round"></span>
+                    </div>
+                </label>
+            </li>
+        </ul>
+    </header>
+</div>
+
+<!-- Content -->
+<div class="container blur p-4 content">
+    <div class="row mt-0 g-5">
+        <div class="col-md-8 " id="article"></div>
+
+        <div class="col-md-4 d-none d-md-block">
+            <div class="position-sticky" style="top: 2rem;">
+
+                <div class="p-4 mb-3 rounded notice">
+                    <span class="fst-italic fs-4 head-line">About</span>
+                    <p class="mb-0">Customize this section to tell your visitors a little bit about your publication,
+                        writers, content, or something else entirely. Totally up to you.</p>
+                </div>
+
+                <nav class="p-4 position-sticky" id="table_of_content"></nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Go Upwards-->
+<button class="upwards" id="upward" onclick="topFunction()"><i class="fas fa-arrow-up"></i>
+</button>
+</body>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/plugins/marked/marked.min.js}"></script>
+<script th:src="@{/plugins/prism/prism.js}"></script>
+<script th:src="@{/plugins/toc/bootstrap-toc.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/init-display.js}"></script>
+<!-- for test -->
+<script>
+    console.log("Something for test.")
+</script>
+</html>

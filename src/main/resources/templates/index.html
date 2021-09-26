@@ -11,8 +11,8 @@
     <link rel="stylesheet" th:href="@{/plugins/toc/bootstrap-toc.css}">
 <body class="main light-theme">
 
+<!-- Nav -->
 <div class="container py-3 blur">
-    <!--nav starts-->
     <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
         <a href="javascript:void(0);"
            class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center">
@@ -35,9 +35,9 @@
             </li>
         </ul>
     </header>
-    <!--nav ends-->
 </div>
 
+<!-- Banner -->
 <div class="container banner">
     <div class="p-4 index-content blur-black" id="content">
         <div class="row p-4 p-md-5 mb-4 text-white rounded ">
@@ -55,41 +55,77 @@
     </div>
 </div>
 
-
+<!-- Gallery -->
 <div class="container">
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="scroll">
+    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pt-2" id="scroll">
         <div class="col-5">
-            <div class="card card-block card-1"></div>
+            <div class="card card-block card-1">
+                <div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div>
+            </div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-2"></div>
+            <div class="card card-block card-2">
+                <div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div>
+            </div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-3"></div>
+            <div class="card card-block card-3">
+                <div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div>
+            </div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-4"></div>
+            <div class="card card-block card-4"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-5"></div>
+            <div class="card card-block card-5"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-6"></div>
+            <div class="card card-block card-6"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-7"></div>
+            <div class="card card-block card-7"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-8"></div>
+            <div class="card card-block card-8"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-9"></div>
+            <div class="card card-block card-9"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div></div>
         </div>
         <div class="col-5">
-            <div class="card card-block card-10"></div>
+            <div class="card card-block card-10"><div class="card-block-header">Article Title</div>
+                <div class="card-body">&ne;Some Content of this article.Some Content of this article.Some Content of
+                    this article
+                </div> </div>
         </div>
     </div>
-    <div class="text-center paddle paddlenav-framed paddlenav-light-content">
+    <div class="text-center paddle paddlenav-framed paddlenav-light-content pt-4">
         <ul>
             <li>
                 <button id="scroll_prev" class="rounded-circle gallery-btn"><i class="fas fa-chevron-left"></i></button>
@@ -102,26 +138,7 @@
     </div>
 </div>
 
-<div class="container blur p-4 content">
-    <div class="row mt-0 g-5">
-        <div class="col-md-8 " id="article"></div>
-
-        <div class="col-md-4 d-none d-md-block">
-            <div class="position-sticky" style="top: 2rem;">
-
-                <div class="p-4 mb-3 rounded notice">
-                    <span class="fst-italic fs-4 head-line">About</span>
-                    <p class="mb-0">Customize this section to tell your visitors a little bit about your publication,
-                        writers, content, or something else entirely. Totally up to you.</p>
-                </div>
-
-                <nav class="p-4 position-sticky" id="table_of_content"></nav>
-
-            </div>
-        </div>
-    </div>
-</div>
-
+<!-- Footer -->
 <div class="blur bottom-0 position-relative w-100">
     <div class="container">
         <footer class="row row-cols-4 py-5 my-5 border-top user-select-none">
@@ -206,6 +223,7 @@
     </div>
 </div>
 
+<!-- Go Upwards-->
 <button class="upwards" id="upward" onclick="topFunction()"><i class="fas fa-arrow-up"></i>
 </button>
 </body>
@@ -214,7 +232,8 @@
 <script th:src="@{/plugins/marked/marked.min.js}"></script>
 <script th:src="@{/plugins/prism/prism.js}"></script>
 <script th:src="@{/plugins/toc/bootstrap-toc.js}"></script>
-<script th:src="@{/js/init.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/init-index.js}"></script>
 <!-- for test -->
 <script>
     console.log("Something for test.")

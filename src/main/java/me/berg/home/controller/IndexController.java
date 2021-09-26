@@ -26,4 +26,9 @@ public class IndexController {
         return "test";
     }
 
+    @GetMapping(value = "/display")
+    public String displayPage() {
+        return "display";
+    }
+
 }
