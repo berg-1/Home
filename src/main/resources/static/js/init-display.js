@@ -51,7 +51,7 @@ function toc() {
     });
 }
 
-
+// Render marked.js
 const renderer = new marked.Renderer();
 renderer.code = function (code, lang, escaped) {
     code = this.options.highlight(code, lang);
@@ -64,11 +64,12 @@ renderer.code = function (code, lang, escaped) {
             </pre>`;
 }
 
+// set prime.js as the code render engine of marked.js
 marked.setOptions({
     renderer: renderer,
     highlight: function (code, lang) {
         try {
-            console.log("Prism initialization")
+            console.log("Prism initialization...")
             return Prism.highlight(code, Prism.languages[lang], lang);
         } catch {
             return code;
@@ -76,10 +77,28 @@ marked.setOptions({
     },
 });
 
+// get url argument
+function getQueryVariable(variable) {
+    const query = window.location.search.substring(1);
+    const vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split("=");
+        if (pair[0] === variable) {
+            return pair[1];
+        }
+    }
+    return false;
+}
 
+// use this as default id
+let fid = "4f740429-7ace-4c6d-9877-ba5bdceb6e28"
+
+if (getQueryVariable("id") !== false) {
+    fid = getQueryVariable("id")
+}
 article_ajax = $.ajax({
     "type": 'get',
-    "url": 'http://localhost:8080/downloadFile?id=1134629f-c718-4a7f-966e-c0483adf0d12',
+    "url": 'http://localhost:8080/downloadFile?id=' + fid,
     "dataType": "text",
     "success": function (data) {
         document.getElementById('article').innerHTML = marked(data);

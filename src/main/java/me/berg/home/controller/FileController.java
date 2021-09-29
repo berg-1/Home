@@ -6,12 +6,10 @@ import me.berg.home.model.FileData;
 import me.berg.home.model.MyFile;
 import me.berg.home.service.FileDataService;
 import me.berg.home.service.MyFileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,17 +17,23 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Controller
 public class FileController {
 
-    @Autowired
     FileDataService dataService;
 
-    @Autowired
     MyFileService myFileService;
+
+    public FileController(FileDataService dataService, MyFileService myFileService) {
+        this.dataService = dataService;
+        this.myFileService = myFileService;
+    }
 
     /**
      * 最大上传限制
@@ -51,12 +55,18 @@ public class FileController {
             if (bytes.length > MAX_UPLOAD_SIZE) {
                 throw new LargeFileException(MAX_UPLOAD_SIZE);
             }
-            String uuid = UUID.randomUUID().toString();
             String fileName = file.getOriginalFilename();
+            assert fileName != null;
+            // 根据文件名生成UUID
+            String uuid = UUID.nameUUIDFromBytes(fileName.getBytes(StandardCharsets.UTF_8)).toString();
             String type = file.getContentType();
-            System.out.println(type);
+            if (Objects.equals(type, "application/octet-stream")) {
+                log.info("Yes, get it.");
+                bytes = replaceImages(bytes);
+            }
+            String des = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
             dataService.save(new FileData(uuid, bytes));
-            myFileService.save(new MyFile(uuid, fileName, type, (short) 1000));
+            myFileService.save(new MyFile(uuid, fileName, type, (short) 1000, null, des));
         } catch (LargeFileException largeFileException) {
             redirectAttributes.addFlashAttribute("message", String.format(
                     "文件过大,上传失败!请将文件控制在%dMB内!",
@@ -70,7 +80,7 @@ public class FileController {
     }
 
     @RequestMapping("/downloadFile")
-    @CrossOrigin(value = "*", maxAge = 1800, allowedHeaders = "*")
+//    @CrossOrigin(value = "*", maxAge = 1800, allowedHeaders = "*")
     public ResponseEntity<byte[]> downloadFile(@RequestParam("id") String id) {
         log.debug("下载文件:id={}", id);
         FileData fileData = dataService.getById(id);
@@ -85,4 +95,25 @@ public class FileController {
         return new ResponseEntity<>(bytes, headers, HttpStatus.OK);
     }
 
+
+    /**
+     * 将所有图片替换为UUID img\1.1.1.OS作为接口示意图.jpg -> img\f5c593d3-13f2-3da8-9d6a-4435270d27d2
+     * @param bytes MyFile bytes
+     * @return bytes
+     */
+    public byte[] replaceImages(byte[] bytes) {
+        String imagePattern = "(img\\\\)([\\s\\S]+?\\.png|[\\S\\s]+?\\.jpg)";
+        String fileString = new String(bytes);
+        Pattern imageCompiler = Pattern.compile(imagePattern);
+        Matcher imageMatcher = imageCompiler.matcher(fileString);
+        String output = new String(bytes);
+        while (imageMatcher.find()) {
+            int start = imageMatcher.start() + 4;
+            int end = imageMatcher.end();
+            String substring = fileString.substring(start, end);
+            String uuid = UUID.nameUUIDFromBytes(substring.getBytes(StandardCharsets.UTF_8)).toString();
+            output = output.replace(substring, uuid);
+        }
+        return output.getBytes(StandardCharsets.UTF_8);
+    }
 }

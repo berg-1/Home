@@ -7,38 +7,52 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 文件表 - 包含所有文件及其文件类型和所属项目
+ *
  * @TableName my_file
  */
-@TableName(value ="my_file")
+@TableName(value = "my_file")
 @Data
 @AllArgsConstructor
 public class MyFile implements Serializable {
     /**
-     * 文件UUID
+     * File's UUID
      */
     @TableId(value = "fid")
     private String fid;
 
     /**
-     * 文件名
+     * Filename
      */
     @TableField(value = "filename")
     private String filename;
 
     /**
-     * 文件类型
+     * File type
      */
     @TableField(value = "typename")
     private String typename;
 
     /**
-     * 所属项目
+     * File's Project
      */
     @TableField(value = "pid")
     private Short pid;
+
+    /**
+     * File's last modify time
+     */
+    @TableField(value = "modify_time")
+    private Date modify_time;
+
+    /**
+     * File 前n个字符
+     */
+    @TableField(value = "description")
+    private String description;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

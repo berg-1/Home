@@ -9,6 +9,8 @@
             <result property="filename" column="filename" jdbcType="VARCHAR"/>
             <result property="typename" column="typename" jdbcType="VARCHAR"/>
             <result property="pid" column="pid" jdbcType="SMALLINT"/>
+            <result property="modify_time" column="modify_time" jdbcType="TIMESTAMP"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
     </resultMap>
 
 

@@ -9,6 +9,7 @@ const scroll = $("#scroll")[0];
 const prev = $("#scroll_prev");
 const next = $("#scroll_next");
 const maxScrollLeft = scroll.scrollWidth - scroll.clientWidth;
+console.log(maxScrollLeft)
 scroll.onscroll = function () {
     if (scroll.scrollLeft === 0) {
         prev.addClass('disabled')

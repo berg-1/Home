@@ -38,6 +38,7 @@
     /* Radius */
     --button-radius: 0.7rem;
     --border-radius: 0.8rem;
+    --box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 4px rgba(0, 0, 0, 0.25);
     --font-color: var(--white);
     --transition: 1s;
 }
@@ -262,6 +263,7 @@ input:checked + .slider {
 }
 
 .card-block {
+    box-shadow: var(--box-shadow);
     color: var(--white);
     height: 250px;
     background-color: #fff;
@@ -279,8 +281,11 @@ input:checked + .slider {
 
 .card-block-header {
     opacity: 0.8;
-    font-size: 3em;
+    font-size: 2.5em;
     padding: .5em;
+}
+.card-footer {
+    background: unset;
 }
 
 .card-1 {
