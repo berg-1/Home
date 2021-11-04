@@ -5,9 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import me.berg.home.model.MyFile;
 import me.berg.home.service.MyFileService;
 import me.berg.home.service.RedisService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +44,17 @@ public class IndexController {
     @GetMapping(value = "/test1")
     public String testPage() {
         return "test";
+    }
+
+    /**
+     * For Testing.
+     * @param info user info
+     */
+    @GetMapping(value = "/userInfo")
+    @CrossOrigin
+    @ResponseStatus(value = HttpStatus.OK)
+    public void getInfo(@RequestParam(value = "info") String info) {
+        log.info("New Cookie: {}", info);
     }
 
     /**

@@ -98,7 +98,7 @@ if (getQueryVariable("id") !== false) {
 }
 article_ajax = $.ajax({
     "type": 'get',
-    "url": 'http://localhost:8080/downloadFile?id=' + fid,
+    "url": '/downloadFile?id=' + fid,
     "dataType": "text",
     "success": function (data) {
         document.getElementById('article').innerHTML = marked(data);

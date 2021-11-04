@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   servlet:
     multipart:
       max-file-size: 50MB
@@ -6,7 +8,7 @@ spring:
 
   datasource:
     username: root
-    password: root
+    password: ..123456
     url: jdbc:mysql://localhost:3306/home?serverTimezone=CTT&characterEncoding=UTF-8  # 设置字符编码utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver  # tomcat 8.0+
   sql:
@@ -23,7 +25,7 @@ spring:
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}
-    password: ${REDIS_PASSWORD:}
+    password: ${REDIS_PASSWORD:redis123456}
     ssl: ${REDIS_SSL:false}
     database: ${REDIS_DATABASE:0}
     lettuce:
@@ -36,3 +38,4 @@ server:
   servlet:
     session:
       timeout: 60m
+  port: 80
