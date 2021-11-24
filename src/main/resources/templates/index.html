@@ -10,161 +10,162 @@
     <link rel="stylesheet" th:href="@{/plugins/prism/prism-light.css}" id="light-theme">
     <link rel="stylesheet" th:href="@{/plugins/toc/bootstrap-toc.css}">
 <body class="main light-theme">
-
-<!-- Nav -->
-<div class="container py-3 blur">
-    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
-        <a href="javascript:void(0);"
-           class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center">
-            <img th:src="@{/images/favicon/favicon.png}" src="/static/images/favicon/favicon.png" alt="B" class="icon">
-            <span class="fs-4 head-line">erg's Site</span>
-        </a>
-
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="javascript:void(0);" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="javascript:void(0);" class="nav-link">Features</a></li>
-            <li class="nav-item"><a href="javascript:void(0);" class="nav-link">About</a></li>
-            <li class="nav-item">
-                <label class="switch nav-link w-auto">
-                    <i class="fas fa-adjust"></i>&nbsp;
-                    <div>
-                        <input type="checkbox"/>
-                        <span class="slider round"></span>
-                    </div>
-                </label>
-            </li>
-        </ul>
-    </header>
-</div>
-
-<!-- Banner -->
-<div class="container banner">
-    <div class="p-4 index-content blur-black" id="content">
-        <div class="row p-4 p-md-5 mb-4 text-white rounded ">
-            <div class="col-md-8 px-0">
-                <span class="display-4 fst-italic Lobster text-gradient">A web for Berg's personal notes.</span>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what’s most interesting in this post’s contents.</p>
-                <p class="lead mb-0"><a href="javascript:void(0);" class="text-white fw-bold">Continue reading...</a>
-                </p>
-            </div>
-            <div class="col-md-4 px-0 d-none d-md-block">
-                <div class="h-100 w-auto banner-pic"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Gallery -->
-<div class="container">
-    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pt-2 pb-2" id="scroll">
-        <div class="col-5" th:each="title, iterStat:${titles}">
-            <a th:href="@{/display(id=${title.fid})}" class="text-decoration-none">
-                <div class=" card-1" th:class="'card card-block card-'+${iterStat.count}">
-                    <div class="card-block-header" th:text="${title.filename}">Article Title</div>
-                    <div class="card-body" th:text="${title.description}">&ne;Some Content of this article.Some Content
-                        of this article.Some Content of this article
-                    </div>
-                    <div class="card-footer" th:text="${title.typename}">Project - Python</div>
-                </div>
+<div class="blur">
+    <!-- Nav -->
+    <div class="container py-3 blur">
+        <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
+            <a href="javascript:void(0);"
+               class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center">
+                <img th:src="@{/images/favicon/favicon.png}" src="/static/images/favicon/favicon.png" alt="B" class="icon">
+                <span class="fs-4 head-line">erg's Site</span>
             </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="javascript:void(0);" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="javascript:void(0);" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="javascript:void(0);" class="nav-link">About</a></li>
+                <li class="nav-item">
+                    <label class="switch nav-link w-auto">
+                        <i class="fas fa-adjust"></i>&nbsp;
+                        <div>
+                            <input type="checkbox"/>
+                            <span class="slider round"></span>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </header>
+    </div>
+
+    <!-- Banner -->
+    <div class="container banner border-radius-rounded box-shadow">
+        <div class="p-4 index-content blur-black" id="content">
+            <div class="row p-4 p-md-5 mb-4 text-white rounded ">
+                <div class="col-md-8 px-0">
+                    <span class="display-4 fst-italic Lobster text-gradient">A web for Berg's personal notes.</span>
+                    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
+                        efficiently about what’s most interesting in this post’s contents.</p>
+                    <p class="lead mb-0"><a href="javascript:void(0);" class="text-white fw-bold">Continue reading...</a>
+                    </p>
+                </div>
+                <div class="col-md-4 px-0 d-none d-md-block">
+                    <div class="h-100 w-auto banner-pic"></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="text-center paddle paddlenav-framed paddlenav-light-content pt-4">
-        <ul>
-            <li>
-                <button id="scroll_prev" class="rounded-circle gallery-btn"><i class="fas fa-chevron-left"></i></button>
-            </li>
-            <li>
-                <button id="scroll_next" class="rounded-circle gallery-btn"><i class="fas fa-chevron-right"></i>
-                </button>
-            </li>
-        </ul>
-    </div>
-</div>
 
-<!-- Footer -->
-<div class="blur bottom-0 position-relative w-100">
+    <!-- Gallery -->
     <div class="container">
-        <footer class="row row-cols-4 py-5 my-5 border-top user-select-none">
-            <div class="col col-md-6">
-                <embed th:src="@{/images/favicon/favicon.svg}" type="image/svg+xml"/>
-                <p class="copyright">
-                    <span class="col col-md-4 col-sm-12">© 2021 Tim Berg.</span>
-                    <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
-                                                            class="text-decoration-none">Terms of use</a></span>
-                    <span>•</span>
-                    <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);" class="text-decoration-none">Privacy</a></span>
-                </p>
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pt-2 pb-2" id="scroll">
+            <div class="col-5" th:each="title, iterStat:${titles}">
+                <a th:href="@{/display(id=${title.fid})}" class="text-decoration-none">
+                    <div class=" card-1" th:class="'card card-block card-'+${iterStat.count}">
+                        <div class="card-block-header" th:text="${title.filename}">Article Title</div>
+                        <div class="card-body" th:text="${title.description}">&ne;Some Content of this article.Some Content
+                            of this article.Some Content of this article
+                        </div>
+                        <div class="card-footer" th:text="${title.typename}">Project - Python</div>
+                    </div>
+                </a>
             </div>
+        </div>
+        <div class="text-center paddle paddlenav-framed paddlenav-light-content pt-4">
+            <ul>
+                <li>
+                    <button id="scroll_prev" class="rounded-circle gallery-btn"><i class="fas fa-chevron-left"></i></button>
+                </li>
+                <li>
+                    <button id="scroll_next" class="rounded-circle gallery-btn"><i class="fas fa-chevron-right"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-            <div class="col col-md-2">
-                <span class="fs-5">Section</span>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-home">&nbsp;Home</span></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
-                            class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-laptop">&nbsp;About</span></a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Footer -->
+    <div class="bottom-0 position-relative w-100 footer">
+        <div class="container">
+            <footer class="row row-cols-4 py-5 my-5 border-top user-select-none">
+                <div class="col col-md-6">
+                    <embed th:src="@{/images/favicon/favicon.svg}" type="image/svg+xml"/>
+                    <p class="copyright">
+                        <span class="col col-md-4 col-sm-12">© 2021 Tim Berg.</span>
+                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
+                                                                class="text-decoration-none">Terms of use</a></span>
+                        <span>•</span>
+                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);" class="text-decoration-none">Privacy</a></span>
+                    </p>
+                </div>
 
-            <div class="col col-md-2">
-                <span class="fs-5">Section</span>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-home">&nbsp;Home</span></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
-                            class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                            class="fas fa-laptop">&nbsp;About</span></a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col col-md-2">
+                    <span class="fs-5">Section</span>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-home">&nbsp;Home</span></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-laptop">&nbsp;About</span></a>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col col-md-2">
-                <span class="fs-5">Social Media</span>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-facebook"></i>&nbsp;Slf4j</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-youtube"></i>&nbsp;Tim</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-instagram"></i>&nbsp;Berg</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-wechat"></i>&nbsp;BergNotEvil</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-twitter"></i>&nbsp;@Berg</a>
-                    </li>
+                <div class="col col-md-2">
+                    <span class="fs-5">Section</span>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-home">&nbsp;Home</span></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-laptop">&nbsp;About</span></a>
+                        </li>
+                    </ul>
+                </div>
 
-                    <li class=" nav-item mb-2 ">
-                        <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="icon-bilibili"></i>&nbsp;Berg-</a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
+                <div class="col col-md-2">
+                    <span class="fs-5">Social Media</span>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-facebook"></i>&nbsp;Slf4j</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-youtube"></i>&nbsp;Tim</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-instagram"></i>&nbsp;Berg</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-wechat"></i>&nbsp;BergNotEvil</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-twitter"></i>&nbsp;@Berg</a>
+                        </li>
+
+                        <li class=" nav-item mb-2 ">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-bilibili"></i>&nbsp;Berg-</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
     </div>
 </div>
 

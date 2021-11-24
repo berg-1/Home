@@ -14,7 +14,7 @@
     --blackest: #000;
     --white: #F5F5F7;
     --whitest: #fff;
-    --night-white: #d8d8d8;
+    --night-white: #c9d1d9;
     --grey: #2d2d2c;
     --blue: #0367a6;
     --red: #d9534f;
@@ -57,7 +57,8 @@
     --footer-font-color: var(--dark-grey);
     --rotate-adjust: rotate(0deg);
     --copy-right: var(--muted);
-    --notice-bg: var(--light-pure-bg)
+    --notice-bg: var(--light-pure-bg);
+    --article-bg: var(--white);
 }
 
 .dark-theme {
@@ -73,7 +74,8 @@
     --footer-font-color: var(--light-grey);
     --rotate-adjust: rotate(180deg);
     --copy-right: var(--muted-light);
-    --notice-bg: var(--dark-pure-bg)
+    --notice-bg: var(--dark-pure-bg);
+    --article-bg: var(--black);
 }
 
 * {
@@ -92,6 +94,11 @@ h1, h2, h3, h4, h5, h6, .head-line {
     color: var(--headline-color);
     transition: var(--transition);
 }
+
+h1 {
+    text-decoration: underline;
+}
+
 
 del, ul, li, dd, dt, th, td {
     color: var(--fontColor);
@@ -113,10 +120,10 @@ p {
 }
 
 .blur {
-    background-color: hsla(0, 0%, 100%, .4);
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
-    margin: 10px auto;
+    background-color: hsla(0, 0%, 100%, .1);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    /*margin: 10px auto;*/
 }
 
 .fs-1vmax {
@@ -131,6 +138,19 @@ p {
     border-bottom: 1px solid #dee2e670 !important;
 }
 
+.border-radius {
+    border-radius: var(--border-radius);
+}
+
+.border-radius-rounded {
+    border-radius: var(--border-radius-rounded);
+}
+
+.box-shadow {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
 .text-gradient {
     background-color: #8EC5FC;
     background-image: -webkit-linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
@@ -139,7 +159,7 @@ p {
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
+    /*-moz-background-clip: text;*/
     -moz-text-fill-color: transparent;
 }
 
@@ -284,7 +304,7 @@ input:checked + .slider {
     background-position: center;
     background-size: cover;
     transition: all 0.2s ease-in-out !important;
-    border-radius: 24px;
+    border-radius: var(--border-radius-rounded);
 }
 
 .card-block:hover {
@@ -369,6 +389,7 @@ input:checked + .slider {
 }
 
 /* content */
+
 .content a {
     color: var(--link-color);
     text-decoration: none;
@@ -382,6 +403,18 @@ input:checked + .slider {
 
 .notice {
     background: var(--notice-bg);
+}
+
+.main_article {
+    background: var(--article-bg);
+    transition: background-color .3s ease-in-out;
+    padding: 30px;
+    border-radius: var(--border-radius);
+}
+
+/* footer */
+.footer {
+    background-color: rgba(255, 255, 255, 20%);
 }
 
 
@@ -433,8 +466,8 @@ input:checked + .slider {
     opacity: 0;
     visibility: hidden;
     position: fixed;
-    right: 50px;
-    bottom: 50px;
+    right: 5%;
+    bottom: 5%;
     background: var(--primary);
     color: var(--opacity-99);
     border: none;
