@@ -9,13 +9,14 @@
     <link rel="stylesheet" th:href="@{/plugins/prism/prism.css}" id="dark-theme">
     <link rel="stylesheet" th:href="@{/plugins/prism/prism-light.css}" id="light-theme">
     <link rel="stylesheet" th:href="@{/plugins/toc/bootstrap-toc.css}">
-<body class="main light-theme">
+<body class="main">
 <div class="blur">
     <!-- Nav -->
-    <div class="container py-3 blur">
+    <div class="container py-3">
         <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
-            <a href="javascript:void(0);"
-               class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center">
+            <a href="javascript:home();"
+               class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center"
+               title="Go to Home Page">
                 <img th:src="@{/images/favicon/favicon.png}" src="/static/images/favicon/favicon.png" alt="B" class="icon">
                 <span class="fs-4 head-line">erg's Site</span>
             </a>
@@ -26,11 +27,12 @@
                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link">About</a></li>
                 <li class="nav-item">
                     <label class="switch nav-link w-auto">
-                        <i class="fas fa-adjust"></i>&nbsp;
-                        <div>
-                            <input type="checkbox"/>
-                            <span class="slider round"></span>
-                        </div>
+                        <i class="fas fa-adjust"></i>
+                        <input type="checkbox"/>
+                        <!--<div>-->
+                        <!--    <input type="checkbox"/>-->
+                        <!--    <span class="slider round"></span>-->
+                        <!--</div>-->
                     </label>
                 </li>
             </ul>
@@ -86,81 +88,95 @@
     <!-- Footer -->
     <div class="bottom-0 position-relative w-100 footer">
         <div class="container">
-            <footer class="row row-cols-4 py-5 my-5 border-top user-select-none">
-                <div class="col col-md-6">
-                    <embed th:src="@{/images/favicon/favicon.svg}" type="image/svg+xml"/>
-                    <p class="copyright">
-                        <span class="col col-md-4 col-sm-12">© 2021 Tim Berg.</span>
-                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
-                                                                class="text-decoration-none">Terms of use</a></span>
-                        <span>•</span>
-                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);" class="text-decoration-none">Privacy</a></span>
-                    </p>
+            <footer class="row py-5 my-5 border-top user-select-none">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <embed th:src="@{/images/favicon/favicon.svg}" type="image/svg+xml"/>
+                        <p class="copyright">
+                            <span class="col col-md-4 col-sm-12">Tim Berg.</span>
+                            <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
+                                                                    class="text-decoration-none">Terms of use</a></span>
+                            <span>•</span>
+                            <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
+                                                                    class="text-decoration-none">Privacy</a></span>
+                        </p>
+                    </div>
+                    <div class="col col-md-2">
+                        <span class="fs-5">Section</span>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-home">&nbsp;Home</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-laptop">&nbsp;About</span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <span class="fs-5">Section</span>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-home">&nbsp;Home</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-laptop">&nbsp;About</span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <span class="fs-5">Section</span>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-home">&nbsp;Home</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                    class="fas fa-laptop">&nbsp;About</span></a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <div class="col col-md-2">
-                    <span class="fs-5">Section</span>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-home">&nbsp;Home</span></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                <div class="d-flex justify-content-between py-4 my-4 border-top">
+                    <p>© 2021 Company, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="nav-item ms-3">
+                            <a href="javascript:redirectBili();" class="p-0 footer-link" title="Facebook"><i class="icon-facebook"></i>&nbsp;</a>
                         </li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-laptop">&nbsp;About</span></a>
+                        <li class="nav-item ms-3">
+                            <a href="javascript:void(0);" class="p-0 footer-link" title="Youtube"><i class="icon-youtube"></i>&nbsp;</a>
                         </li>
-                    </ul>
-                </div>
-
-                <div class="col col-md-2">
-                    <span class="fs-5">Section</span>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-home">&nbsp;Home</span></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                        <li class="nav-item ms-3">
+                            <a href="javascript:void(0);" class="p-0 footer-link" title="Instagram"><i class="icon-instagram"></i>&nbsp;</a>
                         </li>
-                        <li class="nav-item mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
-                                class="fas fa-laptop">&nbsp;About</span></a>
+                        <li class="nav-item ms-3">
+                            <a href="javascript:void(0);" class="p-0 footer-link" title="WeChat"><i class="icon-wechat"></i>&nbsp;</a>
                         </li>
-                    </ul>
-                </div>
-
-                <div class="col col-md-2">
-                    <span class="fs-5">Social Media</span>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-facebook"></i>&nbsp;Slf4j</a>
+                        <li class="nav-item ms-3">
+                            <a href="javascript:void(0);" class="p-0 footer-link" title="Twitter"><i class="icon-twitter"></i>&nbsp;</a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-youtube"></i>&nbsp;Tim</a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-instagram"></i>&nbsp;Berg</a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-wechat"></i>&nbsp;BergNotEvil</a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-twitter"></i>&nbsp;@Berg</a>
-                        </li>
-
-                        <li class=" nav-item mb-2 ">
-                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
-                                    class="icon-bilibili"></i>&nbsp;Berg-</a>
+                        <li class="nav-item ms-3 ">
+                            <a href="javascript:redirectBili();" class="p-0 footer-link" title="Bilibili"><i class="icon-bilibili"></i>&nbsp;</a>
                         </li>
                     </ul>
                 </div>
@@ -180,6 +196,7 @@
 <script th:src="@{/plugins/toc/bootstrap-toc.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/init-index.js}"></script>
+<script th:src="@{/js/init-redirect.js}"></script>
 <!-- for test -->
 <script>
     console.log("Something for test.")
