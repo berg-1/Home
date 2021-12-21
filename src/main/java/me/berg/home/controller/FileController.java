@@ -26,8 +26,11 @@ import java.util.regex.Pattern;
 @Controller
 public class FileController {
 
+    /**
+     * 最大上传限制
+     */
+    private static final Long MAX_UPLOAD_SIZE = 2 * 10 * 1024 * 1024L;
     FileDataService dataService;
-
     MyFileService myFileService;
 
     public FileController(FileDataService dataService, MyFileService myFileService) {
@@ -36,22 +39,18 @@ public class FileController {
     }
 
     /**
-     * 最大上传限制
-     */
-    private static final Long MAX_UPLOAD_SIZE = 2 * 10 * 1024 * 1024L;
-
-    /**
      * 上传一个 File 实体到数据库
      *
      * @param file               文件数据 -> MultipartFile
      * @param redirectAttributes 重定向传值需要
      * @return main_student.html
      */
-    @PostMapping("/uploadFile")
-    public String singleFileUpload(@RequestParam(value = "file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    @PostMapping("/upload")
+    public String singleFileUpload(@RequestParam(value = "file") MultipartFile file, String description, RedirectAttributes redirectAttributes) {
         try {
             // 取得文件并以Bytes方式保存
             byte[] bytes = file.getBytes();
+            if (bytes.length == 0) return "upload";
             if (bytes.length > MAX_UPLOAD_SIZE) {
                 throw new LargeFileException(MAX_UPLOAD_SIZE);
             }
@@ -61,12 +60,14 @@ public class FileController {
             String uuid = UUID.nameUUIDFromBytes(fileName.getBytes(StandardCharsets.UTF_8)).toString();
             String type = file.getContentType();
             if (Objects.equals(type, "application/octet-stream")) {
-                log.info("Yes, get it.");
+                log.info("got FILE.");
                 bytes = replaceImages(bytes);
             }
-            String des = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
+            if (description == null) {
+                description = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
+            }
             dataService.save(new FileData(uuid, bytes));
-            myFileService.save(new MyFile(uuid, fileName, type, (short) 1000, null, des));
+            myFileService.save(new MyFile(uuid, fileName, type, (short) 1000, null, description));
         } catch (LargeFileException largeFileException) {
             redirectAttributes.addFlashAttribute("message", String.format(
                     "文件过大,上传失败!请将文件控制在%dMB内!",
@@ -98,6 +99,7 @@ public class FileController {
 
     /**
      * 将所有图片替换为UUID img\1.1.1.OS作为接口示意图.jpg -> img\f5c593d3-13f2-3da8-9d6a-4435270d27d2
+     *
      * @param bytes MyFile bytes
      * @return bytes
      */

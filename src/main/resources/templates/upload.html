@@ -2,14 +2,47 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Berg | Home Page</title>
-
+    <title>Berg | Upload Page</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" type="image/jpg"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}"/>
 </head>
 <body>
-<h1>Hello, this is my home page!</h1>
-<form role="form" th:action="@{/uploadFile}" method="post" enctype="multipart/form-data">
-    <input type="file" id="file" name="file"/>
-    <button type="submit" >提交</button>
-</form>
+<div class="container">
+    <main>
+        <div class="row g-5 m-auto justify-content-center">
+            <div class="col-md-6 col-lg-6">
+                <h4 class="mb-3 text-black">File Upload</h4>
+                <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="description" class="form-label">Description: </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="description" name="description" required placeholder="Description" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="row gy-3">
+                        <div class="col-12">
+                            <label for="file" class="form-label">File: </label>
+                            <input type="file" name="file" class="form-control" id="file" placeholder="" required="required">
+                            <small class="text-muted">Markdown or Txt file</small>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/init-index.js}"></script>
 </html>
