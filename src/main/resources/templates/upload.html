@@ -1,48 +1,186 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Berg | Upload Page</title>
+    <title>Berg | Display Page</title>
     <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" type="image/jpg"/>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/all.css}"/>
 </head>
-<body>
-<div class="container">
-    <main>
-        <div class="row g-5 m-auto justify-content-center">
-            <div class="col-md-6 col-lg-6">
-                <h4 class="mb-3 text-black">File Upload</h4>
-                <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <label for="description" class="form-label">Description: </label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="description" name="description" required placeholder="Description" >
+<body class="main">
+<div class="blur">
+    <!-- Nav -->
+    <div class="container py-3">
+        <header class="d-flex flex-wrap justify-content-center py-3 border-bottom ms-4">
+            <a href="javascript:home();"
+               class="d-flex align-itemfile_types-center mb-md-0 me-md-auto text-decoration-none align-items-center"
+               title="Go to Home Page">
+                <img th:src="@{/images/favicon/favicon.png}" src="/static/images/favicon/favicon.png" alt="B" class="icon">
+                <span class="fs-4 head-line">erg's Site</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class=""><a href="javascript:void(0);" class="nav-link active" aria-current="page">Home</a></li>
+                <li class=""><a href="javascript:void(0);" class="nav-link">Features</a></li>
+                <li class=""><a href="javascript:void(0);" class="nav-link">About</a></li>
+                <li class="">
+                    <label class="switch nav-link w-auto">
+                        <i class="fas fa-adjust"></i>&nbsp;
+                        <div>
+                            <input type="checkbox"/>
+                            <span class="slider round"></span>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </header>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <main>
+            <div class="row g-5 m-auto justify-content-center">
+                <div class="col-md-6 col-lg-6">
+                    <h4 class="mb-3">File Upload</h4>
+                    <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="description" class="form-label head-line">文件描述信息: </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="description" name="description" required placeholder="Description" >
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <hr class="my-4">
+                        <hr class="my-4">
 
-                    <div class="row gy-3">
-                        <div class="col-12">
-                            <label for="file" class="form-label">File: </label>
-                            <input type="file" name="file" class="form-control" id="file" placeholder="" required="required">
-                            <small class="text-muted">Markdown or Txt file</small>
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <label for="file" class="form-label head-line">文件: </label>
+                                <input type="file" name="file" class="form-control" id="file" placeholder="" required="required">
+                                <small class="text-muted">Markdown or Txt file</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <hr class="my-4">
+                        <hr class="my-4">
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Upload</button>
-                </form>
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <label for="project" class="form-label head-line">文件所属项目: </label>
+                                <select id="project" class="form-select">
+                                    <option>Java</option>
+                                    <option>Python</option>
+                                    <option>Python</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Upload</button>
+                    </form>
+                </div>
             </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <div class="blur bottom-0 position-relative w-100 footer">
+        <div class="container">
+            <footer class="row row-cols-4 py-5 my-5 border-top user-select-none">
+                <div class="col col-md-6">
+                    <embed th:src="@{/images/favicon/favicon.svg}" type="image/svg+xml"/>
+                    <p class="copyright">
+                        <span class="col col-md-4 col-sm-12">© 2021 Tim Berg.</span>
+                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);"
+                                                                class="text-decoration-none">Terms of use</a></span>
+                        <span>•</span>
+                        <span class="col col-md-4 col-sm-12"><a href="javascript:void(0);" class="text-decoration-none">Privacy</a></span>
+                    </p>
+                </div>
+
+                <div class="col col-md-2">
+                    <span class="fs-5">Section</span>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-home">&nbsp;Home</span></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                        </li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-laptop">&nbsp;About</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col col-md-2">
+                    <span class="fs-5">Section</span>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-home">&nbsp;Home</span></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                class="fas fa-external-link-alt">&nbsp;Features</i></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;Pricing</span></a></li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-external-link-alt">&nbsp;FAQs</span></a>
+                        </li>
+                        <li class="mb-2"><a href="javascript:void(0);" class=" p-0 footer-link"><span
+                                class="fas fa-laptop">&nbsp;About</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col col-md-2">
+                    <span class="fs-5">Social Media</span>
+                    <ul class="nav flex-column">
+                        <li class="mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-facebook"></i>&nbsp;Slf4j</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-youtube"></i>&nbsp;Tim</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-instagram"></i>&nbsp;Berg</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-wechat"></i>&nbsp;BergNotEvil</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-twitter"></i>&nbsp;@Berg</a>
+                        </li>
+
+                        <li class=" mb-2 ">
+                            <a href="javascript:void(0);" class=" p-0 footer-link"><i
+                                    class="icon-bilibili"></i>&nbsp;Berg-</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
-    </main>
+    </div>
 </div>
+
+<!-- Go Upwards-->
+<button class="upwards" id="upward" onclick="topFunction()"><i class="fas fa-arrow-up"></i>
+</button>
 </body>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
-<script th:src="@{/js/init-index.js}"></script>
+<script th:src="@{/js/init-redirect.js}"></script>
+<!-- for test -->
+<script>
+    console.log("Something for test.")
+</script>
 </html>

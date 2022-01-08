@@ -1,5 +1,6 @@
 package me.berg.home.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.berg.home.exception.LargeFileException;
 import me.berg.home.model.FileData;
@@ -24,19 +25,15 @@ import java.util.regex.Pattern;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class FileController {
 
     /**
      * 最大上传限制
      */
     private static final Long MAX_UPLOAD_SIZE = 2 * 10 * 1024 * 1024L;
-    FileDataService dataService;
-    MyFileService myFileService;
-
-    public FileController(FileDataService dataService, MyFileService myFileService) {
-        this.dataService = dataService;
-        this.myFileService = myFileService;
-    }
+    private final FileDataService dataService;
+    private final MyFileService myFileService;
 
     /**
      * 上传一个 File 实体到数据库
@@ -80,6 +77,11 @@ public class FileController {
         return "upload";
     }
 
+    /**
+     * 下载文件
+     * @param id 文件ID
+     * @return 想要下载的文件
+     */
     @RequestMapping("/downloadFile")
 //    @CrossOrigin(value = "*", maxAge = 1800, allowedHeaders = "*")
     public ResponseEntity<byte[]> downloadFile(@RequestParam("id") String id) {
