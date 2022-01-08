@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Berg | Display Page</title>
+    <title>Berg | Upload Page</title>
     <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" type="image/jpg"/>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/all.css}"/>
@@ -42,7 +42,7 @@
             <div class="row g-5 m-auto justify-content-center">
                 <div class="col-md-6 col-lg-6">
                     <h4 class="mb-3">File Upload</h4>
-                    <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                    <form role="form" th:action="@{/uploadFile}" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="description" class="form-label head-line">文件描述信息: </label>
@@ -68,10 +68,9 @@
                             <div class="col-12">
                                 <label for="project" class="form-label head-line">文件所属项目: </label>
                                 <select id="project" class="form-select">
-                                    <option>Java</option>
-                                    <option>Python</option>
-                                    <option>Python</option>
-                                    <option>Other</option>
+                                    <option th:each="c:${types.keySet()}" th:value="${types.get(c)}"
+                                            th:text="${c}">Option
+                                    </option>
                                 </select>
                             </div>
                         </div>

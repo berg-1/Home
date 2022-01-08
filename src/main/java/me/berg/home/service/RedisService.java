@@ -122,4 +122,9 @@ public class RedisService {
         return executeSync(commands -> commands.hgetall(key));
     }
 
+
+    public void deleteAll(String key) {
+        executeSync(commands -> commands.del(key));
+    }
+
 }

@@ -1,6 +1,7 @@
 package me.berg.home.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.berg.home.model.MyFile;
 import me.berg.home.service.MyFileService;
@@ -17,15 +18,11 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class IndexController {
 
     private final MyFileService myFileService;
     private final RedisService redisService;
-
-    public IndexController(MyFileService myFileService, RedisService redisService) {
-        this.myFileService = myFileService;
-        this.redisService = redisService;
-    }
 
     @GetMapping(value = {"/", "/index.html", "index"})
     public String homePage(Model model) {
@@ -37,11 +34,6 @@ public class IndexController {
     @GetMapping(value = "/switch")
     public String switchPage() {
         return "switch";
-    }
-
-    @GetMapping(value = "/upload")
-    public String uploadPage() {
-        return "upload";
     }
 
     @GetMapping(value = "/test1")

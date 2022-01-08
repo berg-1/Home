@@ -1,5 +1,6 @@
 package me.berg.home.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.berg.home.service.FileDataService;
 import org.springframework.stereotype.Controller;
@@ -8,13 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class DisplayController {
 
-    FileDataService fileDataService;
-
-    public DisplayController(FileDataService fileDataService) {
-        this.fileDataService = fileDataService;
-    }
+    private final FileDataService fileDataService;
 
     @GetMapping(value = "/display")
     public String displayPage() {

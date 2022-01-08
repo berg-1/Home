@@ -7,6 +7,7 @@ import me.berg.home.model.FileData;
 import me.berg.home.model.MyFile;
 import me.berg.home.service.FileDataService;
 import me.berg.home.service.MyFileService;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,8 +43,11 @@ public class FileController {
      * @param redirectAttributes 重定向传值需要
      * @return main_student.html
      */
-    @PostMapping("/upload")
-    public String singleFileUpload(@RequestParam(value = "file") MultipartFile file, String description, RedirectAttributes redirectAttributes) {
+    @PostMapping("/uploadFile")
+    public String singleFileUpload(@RequestParam(value = "file") MultipartFile file,
+                                   String description,
+                                   @RequestParam(defaultValue = "9999") short project,
+                                   RedirectAttributes redirectAttributes) {
         try {
             // 取得文件并以Bytes方式保存
             byte[] bytes = file.getBytes();
@@ -64,21 +68,26 @@ public class FileController {
                 description = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
             }
             dataService.save(new FileData(uuid, bytes));
-            myFileService.save(new MyFile(uuid, fileName, type, (short) 1000, null, description));
+            myFileService.save(new MyFile(uuid, fileName, type, project, null, description));
         } catch (LargeFileException largeFileException) {
             redirectAttributes.addFlashAttribute("message", String.format(
                     "文件过大,上传失败!请将文件控制在%dMB内!",
                     largeFileException.getMaxSize() / 1048576
             ));
+        } catch (DuplicateKeyException e) {
+            redirectAttributes.addFlashAttribute("重复文件上传!");
+            log.info("Duplicate upload!:{}", file.getOriginalFilename());
+            return "redirect:/upload";
         } catch (Exception s) {
             redirectAttributes.addFlashAttribute("message", "上传失败!");
             s.printStackTrace();
         }
-        return "upload";
+        return "redirect:/upload";
     }
 
     /**
      * 下载文件
+     *
      * @param id 文件ID
      * @return 想要下载的文件
      */
