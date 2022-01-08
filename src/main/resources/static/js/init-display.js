@@ -21,7 +21,6 @@ const catalogTrack = () => {
     }
 };
 
-
 // toggle between dark theme or light theme
 function togglePrismTheme() {
     const light = document.getElementById("light-theme"),
@@ -94,7 +93,7 @@ function getQueryVariable(variable) {
 let fid = "4f740429-7ace-4c6d-9877-ba5bdceb6e28"
 
 if (getQueryVariable("id") !== false) {
-    fid = getQueryVariable("id")
+    fid = getQueryVariable("id");
 }
 article_ajax = $.ajax({
     "type": 'get',
@@ -104,11 +103,20 @@ article_ajax = $.ajax({
         document.getElementById('article').innerHTML = marked(data);
         console.log("ajax:" + new Date())
         Prism.highlightAll();  // Rerun Prism syntax highlighting on the current page
-        toc()
+        toc();
     }
 });
 $.when(article_ajax).done(function () {  // when article ajax done
     $('ul.navbar-nav .active').removeClass('active');
+});
+
+const themeMediaLight = window.matchMedia("(prefers-color-scheme: dark)");
+if (themeMediaLight.matches) {
+    togglePrismTheme();
+}
+themeMediaLight.addEventListener("change", () => {
+    console.log('Toggle Theme');
+    togglePrismTheme();
 });
 
 jQuery(function () {

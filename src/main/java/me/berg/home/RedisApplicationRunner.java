@@ -24,7 +24,7 @@ public class RedisApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         log.info("Redis Project Names - Initializing...");
-        InitRedisProject();
+//        InitRedisProject();
         log.info("Redis Project Names - Initialized...");
     }
 
