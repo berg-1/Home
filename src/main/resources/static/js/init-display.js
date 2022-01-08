@@ -21,7 +21,9 @@ const catalogTrack = () => {
     }
 };
 
-// toggle between dark theme or light theme
+/**
+ * toggle between dark theme or light theme
+ */
 function togglePrismTheme() {
     const light = document.getElementById("light-theme"),
         dark = document.getElementById("dark-theme");
@@ -39,6 +41,9 @@ function togglePrismTheme() {
     }
 }
 
+/**
+ * Table of content
+ */
 function toc() {
     $(function () {
         const navSelector = "#table_of_content";
@@ -76,7 +81,11 @@ marked.setOptions({
     },
 });
 
-// get url argument
+/**
+ * get url argument
+ * @param variable URL
+ * @returns {string|boolean} First arg or false
+ */
 function getQueryVariable(variable) {
     const query = window.location.search.substring(1);
     const vars = query.split("&");
