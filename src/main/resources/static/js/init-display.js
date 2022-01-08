@@ -128,6 +128,11 @@ themeMediaLight.addEventListener("change", () => {
     togglePrismTheme();
 });
 
+const themeSwitch = document.querySelector('input');
+themeSwitch.addEventListener('change', () => {
+    togglePrismTheme();
+});
+
 jQuery(function () {
     console.log("document is ready!")
 });
