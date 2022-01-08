@@ -20,7 +20,7 @@ spring:
         cachecontrol:
           cache-private: true
           must-revalidate: true
-          max-age: 3600
+          max-age: 36000
           cache-public: true
   redis:
     host: ${REDIS_HOST:localhost}
