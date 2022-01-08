@@ -459,6 +459,7 @@ input:checked + .slider {
 /* footer */
 .footer {
     background-color: var(--footer-bg);
+    transition: background-color .15s ease-in-out;
 }
 
 /* footer */
