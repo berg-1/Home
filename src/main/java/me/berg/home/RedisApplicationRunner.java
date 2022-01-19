@@ -7,6 +7,7 @@ import me.berg.home.service.RedisService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,6 +27,12 @@ public class RedisApplicationRunner implements ApplicationRunner {
         log.info("Redis Project Names - Initialized...");
     }
 
+    /**
+     * 提取数据库数据至Redis <br/>
+     * 定时任务（两个小时一次）
+     * corn表达式
+     */
+    @Scheduled(fixedRate = 7200000)
     private void InitRedisProject() {
         redisService.deleteAll("Projects");
         projectService.list()
