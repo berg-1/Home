@@ -155,6 +155,10 @@ p {
     transition: var(--transition);
 }
 
+p img{
+    max-width: 100%;
+}
+
 /* common css */
 .main {
     background: var(--bg) no-repeat fixed center / cover;

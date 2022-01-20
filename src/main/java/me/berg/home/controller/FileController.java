@@ -62,7 +62,7 @@ public class FileController {
             String type = file.getContentType();
             if (Objects.equals(type, "application/octet-stream")) {
                 log.info("got FILE.");
-                bytes = replaceImages(bytes);
+                // bytes = replaceImages(bytes); 不再替换图片，使用图床
             }
             if (description == null) {
                 description = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
