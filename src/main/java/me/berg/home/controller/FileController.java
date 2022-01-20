@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -68,7 +69,7 @@ public class FileController {
                 description = new String(bytes).replaceAll("\\r*\\n* *#*", "").substring(0, 70) + "...";
             }
             dataService.save(new FileData(uuid, bytes));
-            myFileService.save(new MyFile(uuid, fileName, type, project, null, description));
+            myFileService.save(new MyFile(uuid, fileName, type, project, new Date(), description));
         } catch (LargeFileException largeFileException) {
             redirectAttributes.addFlashAttribute("message", String.format(
                     "文件过大,上传失败!请将文件控制在%dMB内!",

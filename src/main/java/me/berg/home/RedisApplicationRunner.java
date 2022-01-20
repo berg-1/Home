@@ -32,7 +32,7 @@ public class RedisApplicationRunner implements ApplicationRunner {
      * 定时任务（两个小时一次）
      * corn表达式
      */
-    @Scheduled(fixedRate = 7200000)
+    @Scheduled(fixedDelay = 7200000)
     private void InitRedisProject() {
         redisService.deleteAll("Projects");
         projectService.list()
